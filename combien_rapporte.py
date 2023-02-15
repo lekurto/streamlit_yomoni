@@ -11,7 +11,7 @@ def sep_decimal(nombre):
     chaine = "{:,d}".format(nombre).replace(',',' ')
     return chaine
 
-st.title("Combien peut rapporter votre capital ?")
+st.title("Combien peut rapporter votre capital&nbsp;?")
 
 # capital = st.number_input("Quel capital souhaitez-vous placer ? (en euros)", step = 1000, format = "%i")
 
@@ -33,7 +33,8 @@ revenu_annuel_s =  sep_decimal(revenu_annuel)
 revenu_mensuel_s = sep_decimal(revenu_mensuel)
 
 
-st.markdown(f"><h3>➡️ En plaçant {capital_s} € à un taux annuel de {taux_s} %, vous toucherez :</h3>", unsafe_allow_html = True)
+st.markdown(f"<h3> ➡️ En plaçant {capital_s} € à un taux annuel de {taux_s} %, vous toucherez :</h3>", unsafe_allow_html = True)
+
 st.markdown(
     """
     <style>
@@ -56,8 +57,7 @@ st.markdown(
             .viewerBadge_link__1S137 {visibility: hidden;}
 
     </style>
-    """,unsafe_allow_html=True
-)
+    """,unsafe_allow_html=True)
 col1, col2 = st.columns(2, gap = "medium")
 
 with col1:
@@ -67,7 +67,7 @@ with col2:
     st.write("soit")
     st.subheader(f"{revenu_mensuel_s} € par mois")
 
-st.write('<style>div.block-container{padding-bottom:0};</style>', unsafe_allow_html=True)
+st.write('<style>div.block-container{padding:0 0 0 0};</style>', unsafe_allow_html=True)
 st.subheader("Pour aller plus loin:")
 # st.markdown(["Les performances de Yomoni"]("https://www.yomoni.fr/performances") )
 st.write("* [Les performances de Yomoni](https://www.yomoni.fr/performances)")
