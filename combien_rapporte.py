@@ -33,25 +33,7 @@ revenu_annuel_s =  sep_decimal(revenu_annuel)
 revenu_mensuel_s = sep_decimal(revenu_mensuel)
 
 
-st.markdown(f"<div style='background-color:red, padding:10px';><h3>➡️ En plaçant {capital_s} € à un taux annuel de {taux_s} %, vous toucherez :</h3>", unsafe_allow_html = True)
-
-col1, col2 = st.columns(2, gap = "medium")
-
-with col1:
-    st.write("des intérêts annuels de ")
-    st.subheader(f"{revenu_annuel_s} € par an")
-with col2:
-    st.write("soit")
-    st.subheader(f"{revenu_mensuel_s} € par mois")
-
-st.text("")
-st.text("")
-
-st.subheader("Pour aller plus loin:")
-# st.markdown(["Les performances de Yomoni"]("https://www.yomoni.fr/performances") )
-st.write("* [Les performances de Yomoni](https://www.yomoni.fr/performances)")
-st.write("* Notre article [Quel capital pour devenir rentier ?](https://blog.yomoni.fr/devenir-rentier-combien-comment/)")
-
+st.markdown(f"><h3>➡️ En plaçant {capital_s} € à un taux annuel de {taux_s} %, vous toucherez :</h3>", unsafe_allow_html = True)
 st.markdown(
     """
     <style>
@@ -60,7 +42,7 @@ st.markdown(
   padding:10px;
           }
 
-    div[data-testid="stHorizontalBlock"]:nth-of-type(4) {
+    div[data-testid="stHorizontalBlock"]:nth-of-type(5) {
   background-color: #D6E3F3;
   padding:10px;
           }
@@ -76,4 +58,17 @@ st.markdown(
     </style>
     """,unsafe_allow_html=True
 )
-st.write('<style>div.block-container{padding:0};</style>', unsafe_allow_html=True)
+col1, col2 = st.columns(2, gap = "medium")
+
+with col1:
+    st.write("des intérêts annuels de ")
+    st.subheader(f"{revenu_annuel_s} € par an")
+with col2:
+    st.write("soit")
+    st.subheader(f"{revenu_mensuel_s} € par mois")
+
+st.write('<style>div.block-container{padding-bottom:0};</style>', unsafe_allow_html=True)
+st.subheader("Pour aller plus loin:")
+# st.markdown(["Les performances de Yomoni"]("https://www.yomoni.fr/performances") )
+st.write("* [Les performances de Yomoni](https://www.yomoni.fr/performances)")
+st.write("* Notre article [Quel capital pour devenir rentier ?](https://blog.yomoni.fr/devenir-rentier-combien-comment/)")
