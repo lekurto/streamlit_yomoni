@@ -24,6 +24,7 @@ st.markdown(
   padding:10px;
           }
 
+    iframe { height: 100%; width: 100%; frameborder: 0; }
 
     </style>
     """,unsafe_allow_html=True
