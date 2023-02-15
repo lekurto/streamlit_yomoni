@@ -11,12 +11,12 @@ st.markdown(
     """
     <style>
     div[data-testid="stHorizontalBlock"]:nth-of-type(7) {
-  background-color: lightgray;
+  background-color: #E1DCDC;
   padding:10px;
           }
 
     div[data-testid="stHorizontalBlock"]:nth-of-type(9) {
-  background-color: lightblue;
+  background-color: #D6E3F3;
   padding:10px;
           }
 
@@ -81,7 +81,7 @@ with col1:
     st.write("des intérêts annuels de ")
     st.subheader(f"{revenu_annuel_s} € par an")
 with col2:
-    st.write("soit...")
+    st.write("soit")
     st.subheader(f"{revenu_mensuel_s} € par mois")
 
 
