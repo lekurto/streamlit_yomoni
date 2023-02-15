@@ -50,7 +50,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.write('<style>div.block-container{padding-top:0;}</style>', unsafe_allow_html=True)
 st.write('<style>div.block-container{padding-bottom:0;}</style>', unsafe_allow_html=True)
 
-st.set_page_config(page_title="Combien peut rapporter votre capital ?", page_icon="🖩")
+st.set_page_config(page_title="Combien peut rapporter votre capital ?")
 
 def sep_decimal(nombre):
     chaine = "{:,d}".format(nombre).replace(',',' ')
