@@ -10,12 +10,12 @@ import streamlit as st
 st.markdown(
     """
     <style>
-    div[data-testid="stHorizontalBlock"]:nth-of-type(4) {
+    div[data-testid="stHorizontalBlock"]:nth-of-type(7) {
   background-color: lightgray;
   padding:10px;
           }
 
-    div[data-testid="stHorizontalBlock"]:nth-of-type(6) {
+    div[data-testid="stHorizontalBlock"]:nth-of-type(9) {
   background-color: lightblue;
   padding:10px;
           }
@@ -23,8 +23,6 @@ st.markdown(
     div[data-testid="column"] {
   padding:10px;
           }
-
-    iframe { height: 100%; width: 100%; frameborder: 0; }
 
     </style>
     """,unsafe_allow_html=True
@@ -46,12 +44,13 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
+st.write('<style>div.block-container{padding-top:0;}</style>', unsafe_allow_html=True)
+st.write('<style>div.block-container{padding-bottom:0;}</style>', unsafe_allow_html=True)
+
 def sep_decimal(nombre):
     chaine = "{:,d}".format(nombre).replace(',',' ')
     return chaine
 
-
-st.markdown("<span style=“background-color:#121922”>",unsafe_allow_html=True)
 st.title("Combien peut rapporter votre capital ?")
 
 # capital = st.number_input("Quel capital souhaitez-vous placer ? (en euros)", step = 1000, format = "%i")
