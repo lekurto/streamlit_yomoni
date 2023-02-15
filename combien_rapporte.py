@@ -68,30 +68,12 @@ st.markdown(
     div[data-testid="column"] {
   padding:10px;
           }
-
-    </style>
-    """,unsafe_allow_html=True
-)
-
-
-hide_menu_style = """
-        <style>
-        #MainMenu {visibility: hidden;}
-        </style>
-        """
-st.markdown(hide_menu_style, unsafe_allow_html=True)
-
-hide_streamlit_style = """
-            <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
             .viewerBadge_link__1S137 {visibility: hidden;}
-            </style>
 
-            """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
-st.write('<style>div.block-container{padding-top:0;}</style>', unsafe_allow_html=True)
-st.write('<style>div.block-container{padding-bottom:0;}</style>', unsafe_allow_html=True)
-
+    </style>
+    """,unsafe_allow_html=True
+)
+st.write('<style>div.block-container{padding:0};</style>', unsafe_allow_html=True)
