@@ -39,11 +39,9 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
-            footer {display: none;}
+            footer {visibility: hidden;}
             header {visibility: hidden;}
-            .viewerBadge_link__1S137 {
-  display: none;
-}
+            .viewerBadge_link__1S137 {visibility: hidden;}
             </style>
 
             """
@@ -51,6 +49,8 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 st.write('<style>div.block-container{padding-top:0;}</style>', unsafe_allow_html=True)
 st.write('<style>div.block-container{padding-bottom:0;}</style>', unsafe_allow_html=True)
+
+st.set_page_config(page_title=’Combien peut rapporter votre capital ?’, page_icon=”🖩”)
 
 def sep_decimal(nombre):
     chaine = "{:,d}".format(nombre).replace(',',' ')
