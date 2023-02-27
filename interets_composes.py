@@ -102,7 +102,9 @@ st.altair_chart(bars, use_container_width=True)
 
 st.markdown("<h3>D'où provient ce capital ?</h3>", unsafe_allow_html = True)
 
-labels = [f"Votre capital initial ({pourcents_capital} %)", f"Intérêts ({ pourcents_int_simples } %)", f"Intérêts composés ({pourcents_int_composes} %)"]
+labels = [f"Capital initial ({pourcents_capital} %)",
+          f"Intérêts sur le capital({ pourcents_int_simples } %)",
+          f"Intérêts sur les intérêts ({pourcents_int_composes} %)"]
 
 source = pd.DataFrame( {
                         "Légende": labels,
@@ -113,10 +115,9 @@ source = pd.DataFrame( {
 domain = labels
 color_range = ['#94B5DC', '#1450B9', '#272C5F'][::-1]
 
-base = alt.Chart(source).mark_arc().encode(
+pie = alt.Chart(source).mark_arc().encode(
     theta=alt.Theta(field="Montant", type="quantitative"),
-    color=alt.Color(field="Légende", type="nominal", scale=alt.Scale(domain = domain, range = color_range),
-                    ))
+    color=alt.Color(field="Légende", type="nominal", scale=alt.Scale(domain = domain, range = color_range) )
+    )
 
-pie_chart = base
-st.altair_chart(pie_chart, use_container_width=True)
+st.altair_chart(pie, use_container_width=True)
