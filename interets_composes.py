@@ -15,14 +15,16 @@ def sep_decimal(nombre):
 
 st.title("Calculatrice d'intérêts composés")
 
-st.subheader("Montant : Quel capital souhaitez-vous placer ?")
+st.subheader("Montant initial : Quel capital souhaitez-vous placer ?")
 capital_initial = st.number_input("En euros", value = 100000)
 
-st.subheader("Taux : À quel taux annuel ?")
-taux = st.slider("En pourcentage", min_value = 0.0, max_value = 20.0, value = 6.0, step = 0.1, help = "Pour 2%, entrez 2")
-
-st.subheader("Durée : Pendant combien d'années ?")
-nb_annees = st.slider("Années", min_value = 1, max_value = 100, value = 30, step = 1)
+col1, col2 = st.columns(2)
+with col1:
+    st.subheader("À quel taux annuel ?")
+    taux = st.slider("En pourcentage", min_value = 0.0, max_value = 20.0, value = 6.0, step = 0.1, help = "Pour 2%, entrez 2")
+with col2:
+    st.subheader("Pendant combien d'années ?")
+    nb_annees = st.slider("Nombre d'années", min_value = 1, max_value = 100, value = 30, step = 1)
 
 capital_initial_s = sep_decimal(int(capital_initial))
 taux_s = str(taux).replace(".", ",")
@@ -39,16 +41,14 @@ interets_composes_s = sep_decimal(round(interets_composes))
 
 st.markdown(f"<h3> ➡️ En plaçant initialement { capital_initial_s } € à un taux annuel de { taux_s } %, et sans toucher ce capital pendant { annees_s} ans, vous obtiendrez à terme un capital de { capital_final_s } €. </h3>", unsafe_allow_html = True)
 
-
-
 pourcents_capital = round(100 * capital_initial / capital_final)
 pourcents_int_simples = round(100 * interets_simples / capital_final)
 pourcents_int_composes = round(100 * interets_composes / capital_final)
 
 st.write("Ce montant se décompose en :")
-st.write(f"Dépôt initial : { capital_initial_s} € ({ pourcents_capital} % du montant final)")
-st.write(f"Intérêts sur ce dépôt : { interets_simples_s } € ({ pourcents_int_simples} % du montant final)")
-st.write(f"Intérêts sur les intérêts : { interets_composes_s } € ({ pourcents_int_composes} % du montant final)")
+st.markdown(f"- Dépôt initial : { capital_initial_s} € \n({ pourcents_capital} % du montant final)")
+st.markdown(f"- Intérêts sur ce dépôt : { interets_simples_s } € \n({ pourcents_int_simples} % du montant final)")
+st.markdown(f"- Intérêts sur les intérêts : { interets_composes_s } € \n({ pourcents_int_composes} % du montant final)")
 
 
 #### ALTAIR BAR CHART ####
