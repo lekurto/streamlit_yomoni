@@ -6,13 +6,8 @@ Created on Wed Feb 15 09:12:50 2023
 @author: nicolas
 """
 import streamlit as st
-
-# import plotly.express as px
 import pandas as pd
-# import matplotlib.pyplot as plt
 import altair as alt
-
-# import plotly.graph_objects as go
 
 def sep_decimal(nombre):
     chaine = "{:,d}".format(nombre).replace(',',' ')
@@ -107,13 +102,15 @@ st.altair_chart(bars, use_container_width=True)
 
 st.markdown("<h3>D'où provient ce capital ?</h3>", unsafe_allow_html = True)
 
+labels = [f"Votre capital initial ({pourcents_capital} %)", f"Intérêts ({ pourcents_int_simples } %)", f"Intérêts composés ({pourcents_int_composes} %)"]
+
 source = pd.DataFrame( {
-                        "Légende": ["Votre capital initial","Intérets", "Intérêts composés"],
+                        "Légende": labels,
                         "Montant": [capital_initial, interets_simples, interets_composes]
                         } )
 
 # on mappe les couleurs
-domain = ["Votre capital initial","Intérets", "Intérêts composés"]
+domain = labels
 color_range = ['#94B5DC', '#1450B9', '#272C5F'][::-1]
 
 base = alt.Chart(source).mark_arc().encode(
@@ -121,4 +118,5 @@ base = alt.Chart(source).mark_arc().encode(
     color=alt.Color(field="Légende", type="nominal", scale=alt.Scale(domain = domain, range = color_range),
                     ))
 
-st.altair_chart(base, use_container_width=True)
+pie_chart = base
+st.altair_chart(pie_chart, use_container_width=True)
