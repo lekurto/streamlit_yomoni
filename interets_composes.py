@@ -23,7 +23,7 @@ with col1:
     st.subheader("À quel taux annuel ?")
     taux = st.slider("En pourcentage", min_value = 0.0, max_value = 20.0, value = 6.0, step = 0.1, help = "Pour 2%, entrez 2")
 with col2:
-    st.subheader("Pendant combien d'années ?")
+    st.subheader("Combien d'années ?")
     nb_annees = st.slider("Nombre d'années", min_value = 1, max_value = 100, value = 30, step = 1)
 
 capital_initial_s = sep_decimal(int(capital_initial))
@@ -38,18 +38,22 @@ capital_final_s = sep_decimal(round(capital_final))
 interets_simples_s = sep_decimal(round(interets_simples))
 interets_composes_s = sep_decimal(round(interets_composes))
 
-
-st.markdown(f"<h3> ➡️ En plaçant initialement { capital_initial_s } € à un taux annuel de { taux_s } %, et sans toucher ce capital pendant { annees_s} ans, vous obtiendrez à terme un capital de { capital_final_s } €. </h3>", unsafe_allow_html = True)
-
 pourcents_capital = round(100 * capital_initial / capital_final)
 pourcents_int_simples = round(100 * interets_simples / capital_final)
 pourcents_int_composes = round(100 * interets_composes / capital_final)
 
-st.write("Ce montant se décompose en :")
-st.markdown(f"- Dépôt initial : { capital_initial_s} € \n({ pourcents_capital} % du montant final)")
-st.markdown(f"- Intérêts sur ce dépôt : { interets_simples_s } € \n({ pourcents_int_simples} % du montant final)")
-st.markdown(f"- Intérêts sur les intérêts : { interets_composes_s } € \n({ pourcents_int_composes} % du montant final)")
+st.markdown(f"<h3> ➡️ En plaçant initialement { capital_initial_s } € à un taux annuel de { taux_s } %, et sans toucher ce capital pendant { annees_s} ans, vous obtiendrez à terme : </h3>", unsafe_allow_html = True)
 
+col1, col2 = st.columns([1,3], gap = "medium")
+
+with col1:
+    st.write("un capital final de :")
+    st.subheader(f"{ capital_final_s } €" )
+with col2:
+    st.write("Ce montant se décompose en :")
+    st.markdown(f"- Dépôt initial : { capital_initial_s} € \n({ pourcents_capital} % du montant final)")
+    st.markdown(f"- Intérêts sur ce dépôt : { interets_simples_s } € \n({ pourcents_int_simples} % du montant final)")
+    st.markdown(f"- Intérêts sur les intérêts : { interets_composes_s } € \n({ pourcents_int_composes} % du montant final)")
 
 #### ALTAIR BAR CHART ####
 # Create dataframe with year, capital, simple interest, and compound interest columns
@@ -117,7 +121,39 @@ color_range = ['#94B5DC', '#1450B9', '#272C5F'][::-1]
 
 pie = alt.Chart(source).mark_arc().encode(
     theta=alt.Theta(field="Montant", type="quantitative"),
-    color=alt.Color(field="Légende", type="nominal", scale=alt.Scale(domain = domain, range = color_range) )
+    color=alt.Color(field="Légende",
+                    type="nominal",
+                    scale=alt.Scale(domain = domain, range = color_range),
+                    legend=alt.Legend(
+                        orient='right'))
     )
 
 st.altair_chart(pie, use_container_width=True)
+st.markdown(
+    """
+    <style>
+    div[class="stNumberInput"] {
+  background-color: #E1DCDC;
+  padding:10px;
+          }
+
+    div[data-testid="stHorizontalBlock"]:nth-of-type(4)  {
+  background-color: #E1DCDC;
+  padding:10px;
+          }
+
+    div[data-testid="stHorizontalBlock"]:nth-of-type(6)  {
+  background-color: #D6E3F3;
+  padding:10px;
+          }
+
+    div[data-testid="column"] {
+  padding:10px;
+          }
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            .viewerBadge_link__1S137 {visibility: hidden;}
+
+    </style>
+    """,unsafe_allow_html=True)
