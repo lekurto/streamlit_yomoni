@@ -9,7 +9,7 @@ import streamlit as st
 
 # import plotly.express as px
 import pandas as pd
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import altair as alt
 
 # import plotly.graph_objects as go
@@ -104,28 +104,28 @@ st.altair_chart(bars, use_container_width=True)
 
 ################## MATPLOT ######################
 
-## pie chart
-st.markdown(f"<h3>Origine du capital final de { capital_final_s } €</h3>", unsafe_allow_html = True)
+# ## pie chart
+# st.markdown(f"<h3>Origine du capital final de { capital_final_s } €</h3>", unsafe_allow_html = True)
 
 
-data = { 'label' : ['Votre épargne initiale', 'Les intérêts simples (sur votre capital)', 'Les intérêts composés (intérêts sur les intérêts)'],
-        'values' : [capital_initial, interets_simples, interets_composes],
-        'colors' : ['#272C5F', '#1450B9', '#94B5DC'] }
+# data = { 'label' : ['Votre épargne initiale', 'Les intérêts simples (sur votre capital)', 'Les intérêts composés (intérêts sur les intérêts)'],
+#         'values' : [capital_initial, interets_simples, interets_composes],
+#         'colors' : ['#272C5F', '#1450B9', '#94B5DC'] }
 
-df = pd.DataFrame(data)
+# df = pd.DataFrame(data)
 
-fig, ax = plt.subplots()
+# fig, ax = plt.subplots()
 
-_, _, autotexts = ax.pie(df['values'],
-        labels=df['label'],
-        colors=data['colors'],
-        autopct='%1.1f%%',
-        counterclock=False,
-        startangle=90
-        )
+# _, _, autotexts = ax.pie(df['values'],
+#         labels=df['label'],
+#         colors=data['colors'],
+#         autopct='%1.1f%%',
+#         counterclock=False,
+#         startangle=90
+#         )
 
-_ = [ autotext.set_color('white') for autotext in autotexts ]
+# _ = [ autotext.set_color('white') for autotext in autotexts ]
 
-st.pyplot(fig, use_container_width=True)
+# st.pyplot(fig, use_container_width=True)
 
 
