@@ -15,8 +15,10 @@ def sep_decimal(nombre):
 
 st.title("Calculatrice d'intérêts composés")
 
-st.subheader("Montant initial : Quel capital souhaitez-vous placer ?")
-capital_initial = st.number_input("En euros", value = 100000)
+col1, col2 = st.columns([99,1])
+with col1:
+    st.subheader("Montant initial : Quel capital souhaitez-vous placer ?")
+    capital_initial = st.number_input("En euros", value = 100000)
 
 col1, col2 = st.columns(2)
 with col1:
@@ -132,17 +134,18 @@ st.altair_chart(pie, use_container_width=True)
 st.markdown(
     """
     <style>
-    div[class="stNumberInput"] {
+
+    div[data-testid="stHorizontalBlock"]:nth-of-type(2)  {
   background-color: #E1DCDC;
   padding:10px;
           }
 
-    div[data-testid="stHorizontalBlock"]:nth-of-type(4)  {
+    div[data-testid="stHorizontalBlock"]:nth-of-type(3)  {
   background-color: #E1DCDC;
   padding:10px;
           }
 
-    div[data-testid="stHorizontalBlock"]:nth-of-type(6)  {
+    div[data-testid="stHorizontalBlock"]:nth-of-type(5)  {
   background-color: #D6E3F3;
   padding:10px;
           }
