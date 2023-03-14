@@ -18,7 +18,7 @@ st.title("Calculatrice d'intérêts composés")
 col1, col2 = st.columns([99,1])
 with col1:
     st.subheader("Montant initial : Quel capital souhaitez-vous placer ?")
-    capital_initial = st.number_input("En euros", value = 100000)
+    capital_initial = st.number_input("En euros", value = 100000, step = 1000)
 
 col1, col2 = st.columns(2)
 with col1:
@@ -26,7 +26,7 @@ with col1:
     taux = st.slider("En pourcentage", min_value = 0.0, max_value = 20.0, value = 6.0, step = 0.1, help = "Pour 2%, entrez 2")
 with col2:
     st.subheader("Combien d'années ?")
-    nb_annees = st.slider("Nombre d'années", min_value = 1, max_value = 100, value = 30, step = 1)
+    nb_annees = st.slider("Nombre d'années", min_value = 1, max_value = 50, value = 10, step = 1)
 
 capital_initial_s = sep_decimal(int(capital_initial))
 taux_s = str(taux).replace(".", ",")
@@ -46,7 +46,7 @@ pourcents_int_composes = round(100 * interets_composes / capital_final)
 
 st.markdown(f"<h3> ➡️ En plaçant initialement { capital_initial_s } € à un taux annuel de { taux_s } %, et sans toucher ce capital pendant { annees_s} ans, vous obtiendrez à terme : </h3>", unsafe_allow_html = True)
 
-col1, col2 = st.columns([1,3], gap = "medium")
+col1, col2 = st.columns([30,70], gap = "small")
 
 with col1:
     st.write("un capital final de :")
@@ -153,10 +153,14 @@ st.markdown(
     div[data-testid="column"] {
   padding:10px;
           }
+
+    div.css-91z34k {
+  padding: 0px;
+}
+
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
             .viewerBadge_link__1S137 {visibility: hidden;}
-
     </style>
     """,unsafe_allow_html=True)
