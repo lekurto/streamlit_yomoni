@@ -163,8 +163,8 @@ st.markdown(
           }
 
     div.egzxvld4 {
-  padding: 12px;
-
+  padding: 0px;
+}
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
